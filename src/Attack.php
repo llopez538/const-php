@@ -15,12 +15,11 @@ class Attack
         $this->description = $description;
     }
 
-    public function getDescription(Unit $attaker, Unit $opponent)
+    public function getDescription(Unit $attacker, Unit $opponent)
     {
-        echo "<h1>".$this->description."</h1>";
-        return Traslate::get($this->description, [
-           'unit' => $attaker->getName(), 
-           'opponent' => $opponent->getName(), 
+        return Translator::get($this->description, [
+            'unit' => $attacker->getName(),
+            'opponent' => $opponent->getName(),
         ]);
     }
 

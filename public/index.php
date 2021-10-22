@@ -5,7 +5,7 @@ namespace Styde;
 require('../vendor/autoload.php');
 
 
-Traslate::SetTralaste([
+Translator::set([
     'BasicBowAttack' => '<b>:unit</b> dispara una flecha con <b>Arco</b> a <b>:opponent</b>',
     'BasicSwordAttack' => '<b>:unit</b> ataca con la <b>Espada</b> a <b>:opponent</b>',
     'CrossBowAttack' => '<b>:unit</b> dispara una flecha con <b>Ballesta</b> a <b>:opponent</b>',
