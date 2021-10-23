@@ -4,6 +4,9 @@ namespace Styde;
 
 class Unit
 {
+    const MAX_DAMAGE = 100;
+    const MIN_HP = 0;
+
     protected $hp = 40;
     protected $name;
     protected $armor;
@@ -64,15 +67,26 @@ class Unit
 
     public function takeDamage(Attack $attack)
     {
-        $this->hp -= $this->armor->absorbDamage($attack);
-        if ($this->hp < 0) {
-            $this->hp = 0;
-        }
+        $this->setHp(
+            $this->armor->absorbDamage($attack)
+        );
 
         Log::info("{$this->name} ahora tiene {$this->hp} puntos de vida");
         
         if ($this->hp <= 0) {
             $this->die();
+        }
+    }
+    
+    public function setHp($damage) {
+        if ($damage > static::MAX_DAMAGE) {
+            $damage = static::MAX_DAMAGE;
+        }
+
+        $this->hp -= $damage;
+    
+        if ($this->hp < static::MIN_HP) {
+            $this->hp = static::MIN_HP;
         }
     }
     
